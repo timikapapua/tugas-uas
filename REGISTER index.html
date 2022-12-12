@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Gabriel</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        form{
+            width: 440px; height: 364px; ;border: 5px solid rgb(242, 226, 7) ;margin: auto;
+            padding: 0%;
+            text-align: center;
+            background-color: rgb(169, 245, 147);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        select{
+            width: 175px;;
+            height: 25px;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+              <h2>Grooming Kucing
+                <img src="t.png"  height="20" width="20">
+                <img src="i.jpg" width="20" height="20">
+                <img src="facebook-1802605_960_720.webp" width="20" height="20">
+              </h2>
+        </div>
+            <ul class="menu">
+                <li><a href="index home.html">Home</a></li>
+                <li><a href="product index.html">Product</a>
+                    <ul class="drop">
+                    <li><a href="catgroam index.html">catgroam</a></li>
+                    <li><a href="catbath index.html">catbath</a></li>
+                    <li><a href="catgroomer index.html">catgroomer</a></li>
+                    </ul></li>
+                    <li><a href="about us.html">About us</a></li>
+                <li><a href="REGISTER index.html">Register</a></li>
+            <div class="login">
+                <li><a href="login index.html">Login</a></li>
+            </div>
+            </ul>
+    </nav>
+       <main class="container">
+        <div class="col-md-6 p-lg-5 mx-auto">
+            <div class="row">
+                <h2 class="fw-bold my-1 text-center">Register</h2>
+                <form action="" method="post" id="form_register">
+                    <br>
+                    <label for="register">REGISTER</label>
+                    <hr>
+                
+                    <br>
+                    <label>full name</label>
+                    <div class="form mb-2">
+                        <input type="text" class="form-control" name="namadepan">
+                    </div>
+                    <label>email</label>
+                    <div class="form mb-2">
+                        <input type="text" class="form-control" name="email">
+                    </div>
+                    <label>gender</label>
+                    <div class="form mb-2">
+                       male <input type="radio" class="form-control" name="jenis kelamin" value="male">
+                       female <input type="radio" class="form-control" name="jenis kelamin" value="female">
+                    </div>
+                    <label>city</label>
+                    <br>
+                    <select name="">
+                        <option value="timika" inputmode="text" class="form-control">timika</option>
+                        <option value="maumere" inputmode="text" class="form-control ">maumere</option>
+                    </select>
+                    <br>
+                    <label>Password</label>
+                    <div class="form mb-2">
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div>
+                    <label>Confirm Password</label>
+                    <div class="form mb-2">
+                        <input type="password" class="form-control" name="confirm_password">
+                    </div>
+                    <br>
+                    <button class="w-100 mb-2 btn btn-lg btn-primary   " type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script lang="JavaScript">
+        $(document).ready(function()
+            ('#form_register').submit(function(event){
+                event.preventDefault();
+
+                $.validator.addMethod("valueNotEquals", function (value, element, arg) {
+                    return arg != value;
+                } "value must not equal arg.");
+
+                $("#form_register").validate({
+
+                    highlight: function (input) {
+                        $(input).parents('.mb-2').addClass('error');
+                    }
+                    unhighlight: function (input){
+                        $(input).parents('.mb-2').removeClass('error');
+                    }
+                    errorPlacement: function (error, element){
+                        $(element).parents('.mb-2').append(error);
+                    }
+
+                    rules: {
+                        full name : "required";
+                        username : {
+                            required : true;
+                            minlength: 2;
+                        }
+                        email : {
+                            required: true;
+                            email : true;
+                        }
+                        password: {
+                            required:true;
+                            minlength: 6
+                        }
+                        confirm_password: {
+                            required: true;
+                            minlength: 6;
+                            equalTo: "#password";
+                        }
+                    },
+                    messages: {
+                        full name: "Nama depan tidak boleh kosong";
+                
+                        },
+                        email : "Masukan email yang valid";
+                        password : {
+                            required : "Password tidak boleh kosong";
+                            minlength: "Password terdiri dari 6 karakter lebih";
+                        },
+                        confirm_password : {
+                            required : "Password tidak boleh kosong";
+                            minlength: "Password terdiri dari 6 karakter lebih";
+                            equalTo : "Password tidak sama";
+                        }
+                    }
+
+                })
+            })
+        );
+    </script>
+
+</body>
+</html>
+</body>
+</html>
